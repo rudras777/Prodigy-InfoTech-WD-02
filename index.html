@@ -1,0 +1,161 @@
+@@ -0,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Stopwatch Pro</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="app-container">
+        <div class="background-gradient"></div>
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>        
+        <header class="app-header">
+            <div class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12,6 12,12 16,14"/>
+                </svg>
+                <h1>Stopwatch Pro</h1>
+            </div>
+            <div class="theme-toggle" id="themeToggle">
+                <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="12" cy="12" r="5"/>
+                    <line x1="12" y1="1" x2="12" y2="3"/>
+                    <line x1="12" y1="21" x2="12" y2="23"/>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                    <line x1="1" y1="12" x2="3" y2="12"/>
+                    <line x1="21" y1="12" x2="23" y2="12"/>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+                </svg>
+                <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                </svg>
+            </div>
+        </header>
+
+        <main class="stopwatch-main">
+            <div class="stopwatch-container">
+                <div class="time-display-wrapper">
+                    <div class="time-display" id="timeDisplay">
+                        <span class="time-hours">00</span>
+                        <span class="time-separator">:</span>
+                        <span class="time-minutes">00</span>
+                        <span class="time-separator">:</span>
+                        <span class="time-seconds">00</span>
+                        <span class="time-milliseconds">.000</span>
+                    </div>
+                    <div class="time-labels">
+                        <span>Hours</span>
+                        <span>Minutes</span>
+                        <span>Seconds</span>
+                        <span>Milliseconds</span>
+                    </div>
+                </div>
+
+                <div class="status-indicator" id="statusIndicator">
+                    <div class="status-dot"></div>
+                    <span class="status-text">Ready</span>
+                </div>
+
+                <div class="controls-section">
+                    <div class="primary-controls">
+                        <button class="control-btn start-btn" id="startBtn" data-action="start">
+                            <svg class="btn-icon play-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <polygon points="5,3 19,12 5,21"/>
+                            </svg>
+                            <span>Start</span>
+                        </button>
+                        
+                        <button class="control-btn pause-btn" id="pauseBtn" data-action="pause" style="display: none;">
+                            <svg class="btn-icon pause-icon" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <rect x="6" y="4" width="4" height="16"/>
+                                <rect x="14" y="4" width="4" height="16"/>
+                            </svg>
+                            <span>Pause</span>
+                        </button>
+                        
+                        <button class="control-btn reset-btn" id="resetBtn" data-action="reset">
+                            <svg class="btn-icon reset-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="1,4 1,10 7,10"/>
+                                <path d="M3.51,15a9,9,0,0,0,2.13,3.09,9,9,0,0,0,13.72,0,9,9,0,0,0,0-12.72,9,9,0,0,0-13.72,0L3.51,9"/>
+                            </svg>
+                            <span>Reset</span>
+                        </button>
+                    </div>
+
+                    <div class="secondary-controls">
+                        <button class="control-btn lap-btn" id="lapBtn" data-action="lap">
+                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v6m0 6v6"/>
+                                <path d="m21 12-6-6m-6 6-6-6"/>
+                            </svg>
+                            <span>Lap</span>
+                        </button>
+                        
+                        <button class="control-btn fullscreen-btn" id="fullscreenBtn" data-action="fullscreen">
+                            <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                            </svg>
+                            <span>Fullscreen</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="lap-times-section" id="lapTimesSection">
+                    <h3 class="lap-times-title">Lap Times</h3>
+                    <div class="lap-times-container" id="lapTimesContainer">
+                        <!-- Lap times will be inserted here -->
+                    </div>
+                    <button class="clear-laps-btn" id="clearLapsBtn">Clear All Laps</button>
+                </div>
+
+                <div class="keyboard-shortcuts">
+                    <h4>Keyboard Shortcuts</h4>
+                    <div class="shortcuts-grid">
+                        <div class="shortcut">
+                            <kbd>Space</kbd>
+                            <span>Start/Pause</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>R</kbd>
+                            <span>Reset</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>L</kbd>
+                            <span>Lap</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>F</kbd>
+                            <span>Fullscreen</span>
+                        </div>
+                        <div class="shortcut">
+                            <kbd>T</kbd>
+                            <span>Theme</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <p>&copy; 2025 Stopwatch Pro. Precision timing for professionals.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
